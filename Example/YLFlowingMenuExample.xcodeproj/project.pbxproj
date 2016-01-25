@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE326AD71C5614F200F65366 /* UIView+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = CE326AD61C5614F200F65366 /* UIView+Center.m */; };
 		CEA4885C1C22B5F200019BBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA4885B1C22B5F200019BBF /* main.m */; };
 		CEA4885F1C22B5F200019BBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA4885E1C22B5F200019BBF /* AppDelegate.m */; };
 		CEA488621C22B5F200019BBF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA488611C22B5F200019BBF /* ViewController.m */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE326AD51C5614F200F65366 /* UIView+Center.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Center.h"; sourceTree = "<group>"; };
+		CE326AD61C5614F200F65366 /* UIView+Center.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Center.m"; sourceTree = "<group>"; };
 		CEA488571C22B5F200019BBF /* YLFlowingMenuExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLFlowingMenuExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA4885B1C22B5F200019BBF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEA4885D1C22B5F200019BBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 			children = (
 				CEA488751C22B6C100019BBF /* FlowingMenuTransitionManager.h */,
 				CEA488761C22B6C100019BBF /* FlowingMenuTransitionManager.m */,
+				CE326AD51C5614F200F65366 /* UIView+Center.h */,
+				CE326AD61C5614F200F65366 /* UIView+Center.m */,
 			);
 			name = YLFlowingMenu;
 			path = ../YLFlowingMenu;
@@ -213,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA488621C22B5F200019BBF /* ViewController.m in Sources */,
+				CE326AD71C5614F200F65366 /* UIView+Center.m in Sources */,
 				CEA488841C22BBF700019BBF /* User.m in Sources */,
 				CEA4885F1C22B5F200019BBF /* AppDelegate.m in Sources */,
 				CEA4888A1C22BF1A00019BBF /* UserChatCellView.m in Sources */,
