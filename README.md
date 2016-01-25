@@ -1,6 +1,6 @@
-# YLFlowingMenu
+# YLFlowingMenu (Under dev)
 
-YLFlowingMenu provides an interactive transition manager to display menu with a flowing and bouncing effects.
+YLFlowingMenu provides an interactive transition manager to display menu with a flowing and bouncing effects. (See https://github.com/yannickl/FlowingMenu)
 
 <p align="center">
   <img src="http://yannickloriot.com/resources/flowingmenu.gif" alt="YLFlowingMenu" width="300"/>
