@@ -12,7 +12,6 @@ Yannick Loriot
  - [https://twitter.com/yannickloriot](https://twitter.com/yannickloriot)
  - [contact@yannickloriot.com](mailto:contact@yannickloriot.com)
 
-
 ## License (MIT)
 
 Copyright (c) 2015-present - Yannick Loriot
