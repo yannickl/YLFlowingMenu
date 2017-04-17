@@ -188,7 +188,7 @@
             anim.fillMode            = kCAFillModeForwards;
             [self.shapeMaskLayer addAnimation:anim forKey:@"bubbleAnim"];
         
-            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:100 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 for (ObjectPoint *p in self.controlPoints) {
                     p.x = menuWidth;
                 }

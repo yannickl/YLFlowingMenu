@@ -57,7 +57,7 @@
 
 -(void)setY:(CGFloat)y
 {
-    CGPoint tmpPoint = CGPointMake(self.point.y, y);
+    CGPoint tmpPoint = CGPointMake(self.point.x, y);
     self.point = tmpPoint;
 }
 
