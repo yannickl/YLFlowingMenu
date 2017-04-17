@@ -188,24 +188,24 @@
             anim.fillMode            = kCAFillModeForwards;
             [self.shapeMaskLayer addAnimation:anim forKey:@"bubbleAnim"];
         
-            for (ObjectPoint *p in self.controlPoints) {
-                p.x = menuWidth;
-            }
-    
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0 options:UIViewAnimationOptionTransitionNone animations:^{
-                                for (ObjectPoint *p in self.controlPoints) {
-                                    p.x = menuWidth;
-                                }
-                            } completion:^(BOOL finished) {
-                                [self.shapeLayer removeFromSuperlayer];
-                                containerView.userInteractionEnabled = YES;
+            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                for (ObjectPoint *p in self.controlPoints) {
+                    p.x = menuWidth;
+                }
+                self.shapeLayer.path = [self currentPath];
                 
-                                menuView.layer.mask = nil;
-                                self.displayLink.paused = YES;
-                                completion();
-                            }];
-            });
+            } completion:^(BOOL finished) {
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.shapeLayer removeFromSuperlayer];
+                    containerView.userInteractionEnabled = YES;
+                    
+                    menuView.layer.mask = nil;
+                    self.displayLink.paused = YES;
+                    completion();
+                });
+                
+            }];
         }else {
             menuView.layer.mask = nil;
             self.displayLink.paused = YES;
