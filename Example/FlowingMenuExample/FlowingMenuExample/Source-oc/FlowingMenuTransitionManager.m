@@ -241,11 +241,15 @@
         if (!canceled) {
             [self.bottomView removeFromSuperview];
         }else{
-            [menuView removeFromSuperview];
-            [ov removeFromSuperview];
-            ov.frame = containerView.bounds;;
-            [self.bottomView addSubview:menuView];
-            [containerView insertSubview:self.bottomView aboveSubview:ov];
+            
+            if ([menuView isKindOfClass:[UIScrollView class]]) {
+                [menuView removeFromSuperview];
+                [self addTapGestureToView:ov];
+                [self.bottomView addSubview:menuView];
+                [containerView insertSubview:self.bottomView aboveSubview:ov];
+            }else{
+                [self addTapGestureToView:ov];
+            }
         }
         
         completion();
