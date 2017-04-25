@@ -13,7 +13,9 @@
 @property(strong, nonatomic) CAShapeLayer *shapeMaskLayer;
 @property(strong, nonatomic) CADisplayLink *displayLink;
 @property(nonatomic) BOOL interactive;
-@property(strong, nonatomic) NSArray<__kindof ObjectPoint *>*controlPoints;
+
+@property(strong, nonatomic) NSArray<__kindof UIView *>*controlViews;
+
 @property(strong, nonatomic) UIView *bottomView;
 @end
 @implementation FlowingMenuTransitionManager
@@ -37,9 +39,10 @@
         self.displayLink.paused = YES;
         NSMutableArray *arr = [NSMutableArray array];
         for (int i=0; i<8; i++) {
-            [arr addObject:[ObjectPoint pointWithPoint:CGPointZero]];
+            UIView *view = [UIView new];
+            [arr addObject:view];
         }
-        self.controlPoints = arr;
+        self.controlViews = arr;
         self.shapeLayer = [CAShapeLayer layer];
         self.shapeMaskLayer = [CAShapeLayer layer];
     }
@@ -129,7 +132,7 @@
 
     }else {
         // Last control points help us to know the menu height
-        self.controlPoints[7].point = CGPointMake(0, menuView.bounds.size.height);
+        self.controlViews[7].center = CGPointMake(0, menuView.bounds.size.height);
         
         // Be sure there is no animation running
         [self.shapeMaskLayer removeAllAnimations];
@@ -157,6 +160,12 @@
         
         // Add the shape layer to container view
         [containerView.layer addSublayer:self.shapeLayer];
+        
+        for (UIView *v in self.controlViews) {
+            [v removeFromSuperview];
+            [containerView addSubview:v];
+        }
+        
     }
     
     containerView.userInteractionEnabled = NO;
@@ -188,22 +197,19 @@
             anim.fillMode            = kCAFillModeForwards;
             [self.shapeMaskLayer addAnimation:anim forKey:@"bubbleAnim"];
         
-            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:100 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                for (ObjectPoint *p in self.controlPoints) {
-                    p.x = menuWidth;
+            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.43 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                for (UIView *v in self.controlViews) {
+                    v.center = CGPointMake(menuWidth, v.center.y);
                 }
-                self.shapeLayer.path = [self currentPath];
                 
             } completion:^(BOOL finished) {
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.shapeLayer removeFromSuperlayer];
-                    containerView.userInteractionEnabled = YES;
-                    
-                    menuView.layer.mask = nil;
-                    self.displayLink.paused = YES;
-                    completion();
-                });
+                [self.shapeLayer removeFromSuperlayer];
+                containerView.userInteractionEnabled = YES;
+                
+                menuView.layer.mask = nil;
+                self.displayLink.paused = YES;
+                completion();
                 
             }];
         }else {
@@ -266,11 +272,11 @@
     UIBezierPath *bezierPath = [UIBezierPath new];
     
     [bezierPath moveToPoint:CGPointZero];
-    [bezierPath addLineToPoint:CGPointMake(self.controlPoints[0].point.x, 0)];
-    [bezierPath addCurveToPoint:self.controlPoints[2].point controlPoint1:self.controlPoints[0].point controlPoint2:self.controlPoints[1].point];
-    [bezierPath addCurveToPoint:self.controlPoints[4].point controlPoint1:self.controlPoints[3].point controlPoint2:self.controlPoints[4].point];
-    [bezierPath addCurveToPoint:self.controlPoints[6].point controlPoint1:self.controlPoints[4].point controlPoint2:self.controlPoints[5].point];
-    [bezierPath addLineToPoint:CGPointMake(0, self.controlPoints[7].point.y)];
+    [bezierPath addLineToPoint:CGPointMake(self.controlViews[0].center.x, 0)];
+    [bezierPath addCurveToPoint:self.controlViews[2].center controlPoint1:self.controlViews[0].center controlPoint2:self.controlViews[1].center];
+    [bezierPath addCurveToPoint:self.controlViews[4].center controlPoint1:self.controlViews[3].center controlPoint2:self.controlViews[4].center];
+    [bezierPath addCurveToPoint:self.controlViews[6].center controlPoint1:self.controlViews[4].center controlPoint2:self.controlViews[5].center];
+    [bezierPath addLineToPoint:CGPointMake(0, self.controlViews[7].center.y)];
     [bezierPath closePath];
     
     return bezierPath.CGPath;
@@ -278,7 +284,7 @@
 
 - (void)moveControlPointsToPoint:(CGPoint )position waveWidth:(CGFloat)waveWidth
 {
-    CGFloat height     = self.controlPoints[7].point.y;
+    CGFloat height     = self.controlViews[7].center.y;
     
     CGFloat minTopY    = MIN((position.y - height / 2) * 0.28, 0);
     CGFloat maxBottomY = MAX(height + (position.y - height / 2) * 0.28, height);
@@ -286,13 +292,13 @@
     CGFloat leftPartWidth  = position.y - minTopY;
     CGFloat rightPartWidth = maxBottomY - position.y;
     
-    self.controlPoints[0].point = CGPointMake(position.x, minTopY);
-    self.controlPoints[1].point = CGPointMake(position.x, minTopY + leftPartWidth * 0.44);
-    self.controlPoints[2].point = CGPointMake(position.x + waveWidth * 0.64, minTopY + leftPartWidth * 0.71);
-    self.controlPoints[3].point = CGPointMake(position.x + waveWidth * 1.36, position.y);
-    self.controlPoints[4].point = CGPointMake(position.x + waveWidth * 0.64, maxBottomY - rightPartWidth * 0.71);
-    self.controlPoints[5].point = CGPointMake(position.x, maxBottomY - (rightPartWidth * 0.44));
-    self.controlPoints[6].point = CGPointMake(position.x, height);
+    self.controlViews[0].center = CGPointMake(position.x, minTopY);
+    self.controlViews[1].center = CGPointMake(position.x, minTopY + leftPartWidth * 0.44);
+    self.controlViews[2].center = CGPointMake(position.x + waveWidth * 0.64, minTopY + leftPartWidth * 0.71);
+    self.controlViews[3].center = CGPointMake(position.x + waveWidth * 1.36, position.y);
+    self.controlViews[4].center = CGPointMake(position.x + waveWidth * 0.64, maxBottomY - rightPartWidth * 0.71);
+    self.controlViews[5].center = CGPointMake(position.x, maxBottomY - (rightPartWidth * 0.44));
+    self.controlViews[6].center = CGPointMake(position.x, height);
     
 }
 

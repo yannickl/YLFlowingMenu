@@ -16,7 +16,6 @@
 		1FA9C4D31E9F7E57002EF1EE /* FlowingMenuExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4D21E9F7E57002EF1EE /* FlowingMenuExampleUITests.m */; };
 		1FA9C4ED1E9F7E64002EF1EE /* FlowingMenuTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4E21E9F7E64002EF1EE /* FlowingMenuTransitionManager.m */; };
 		1FA9C4EE1E9F7E64002EF1EE /* FlowingMenuTransitionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4E41E9F7E64002EF1EE /* FlowingMenuTransitionStatus.m */; };
-		1FA9C4F11E9F7E64002EF1EE /* ObjectPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4EB1E9F7E64002EF1EE /* ObjectPoint.m */; };
 		1FA9C4F61E9F7EDB002EF1EE /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4F31E9F7EDB002EF1EE /* MainTableViewController.m */; };
 		1FA9C4F71E9F7EDB002EF1EE /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C4F51E9F7EDB002EF1EE /* MenuTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -58,8 +57,6 @@
 		1FA9C4E31E9F7E64002EF1EE /* FlowingMenuTransitionStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowingMenuTransitionStatus.h; sourceTree = "<group>"; };
 		1FA9C4E41E9F7E64002EF1EE /* FlowingMenuTransitionStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowingMenuTransitionStatus.m; sourceTree = "<group>"; };
 		1FA9C4E51E9F7E64002EF1EE /* FromViewControllerNeedsConform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FromViewControllerNeedsConform.h; sourceTree = "<group>"; };
-		1FA9C4EA1E9F7E64002EF1EE /* ObjectPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectPoint.h; sourceTree = "<group>"; };
-		1FA9C4EB1E9F7E64002EF1EE /* ObjectPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectPoint.m; sourceTree = "<group>"; };
 		1FA9C4EC1E9F7E64002EF1EE /* ToViewControllerNeedsConform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToViewControllerNeedsConform.h; sourceTree = "<group>"; };
 		1FA9C4F21E9F7EDB002EF1EE /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		1FA9C4F31E9F7EDB002EF1EE /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
@@ -165,8 +162,6 @@
 				1FA9C4E31E9F7E64002EF1EE /* FlowingMenuTransitionStatus.h */,
 				1FA9C4E41E9F7E64002EF1EE /* FlowingMenuTransitionStatus.m */,
 				1FA9C4E51E9F7E64002EF1EE /* FromViewControllerNeedsConform.h */,
-				1FA9C4EA1E9F7E64002EF1EE /* ObjectPoint.h */,
-				1FA9C4EB1E9F7E64002EF1EE /* ObjectPoint.m */,
 				1FA9C4EC1E9F7E64002EF1EE /* ToViewControllerNeedsConform.h */,
 			);
 			path = "Source-oc";
@@ -306,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA9C4EE1E9F7E64002EF1EE /* FlowingMenuTransitionStatus.m in Sources */,
-				1FA9C4F11E9F7E64002EF1EE /* ObjectPoint.m in Sources */,
 				1FA9C4F61E9F7EDB002EF1EE /* MainTableViewController.m in Sources */,
 				1FA9C4B21E9F7E57002EF1EE /* AppDelegate.m in Sources */,
 				1FA9C4ED1E9F7E64002EF1EE /* FlowingMenuTransitionManager.m in Sources */,
@@ -543,6 +537,7 @@
 				1FA9C4D91E9F7E57002EF1EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FA9C4DA1E9F7E57002EF1EE /* Build configuration list for PBXNativeTarget "FlowingMenuExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +546,7 @@
 				1FA9C4DC1E9F7E57002EF1EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FA9C4DD1E9F7E57002EF1EE /* Build configuration list for PBXNativeTarget "FlowingMenuExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -559,6 +555,7 @@
 				1FA9C4DF1E9F7E57002EF1EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
