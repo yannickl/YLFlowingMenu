@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ObjectPoint.h"
 #import "FlowingMenuTransitionStatus.h"
 #import "ToViewControllerNeedsConform.h"
 #import "FromViewControllerNeedsConform.h"
